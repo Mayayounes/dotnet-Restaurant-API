@@ -1,0 +1,75 @@
+@host = https://localhost
+@port = 7157
+@Restaurants.api_HostAddress = {{host}}:{{port}}  
+
+###
+//Get all restaurants
+GET {{Restaurants.api_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+//Get single restaurant
+GET {{Restaurants.api_HostAddress}}/api/restaurants/16
+Accept: application/json
+
+###
+//Add restaurant
+POST {{Restaurants.api_HostAddress}}/api/restaurants
+Content-type: application/json
+
+{
+  "Name": "Coff",
+  "Description": "Coffee shop",
+  "Category": "Italian",
+  "ContactEmail":"coff@gmail.com",
+  "ContactNumber":"010022267999",
+  "City": "Alexandria",
+  "Street": "kafr abdo",
+  "PostalCode": 333
+}
+
+###
+//Get single restaurant
+GET https://localhost:7157/api/restaurants/35
+
+###
+//delete restaurant
+DELETE {{Restaurants.api_HostAddress}}/api/restaurants/100
+
+###
+//update restaurant
+PATCH {{Restaurants.api_HostAddress}}/api/restaurants/35
+Content-Type: application/json
+
+{
+  "Name":"Carbs",
+  "Description":"Italian"
+}
+
+###
+//Dishes
+
+//add dish to specific restaurant
+POST {{Restaurants.api_HostAddress}}/api/restaurants/3/dishes
+Content-Type : application/json
+
+{
+  "Name": "Apple",
+  "Description":"Fresh" ,
+  "Price":"10" ,
+  "KiloCalories": 200
+}
+
+
+###
+//get all dishes for a specific restaurant
+GET {{Restaurants.api_HostAddress}}/api/restaurants/1/dishes
+
+
+###
+//get a specific dish for a specific restaurant
+GET {{Restaurants.api_HostAddress}}/api/restaurants/1/dishes/2
+
+###
+//delete dishes of a restaurant
+DELETE {{Restaurants.api_HostAddress}}/api/restaurants/100/dishes
