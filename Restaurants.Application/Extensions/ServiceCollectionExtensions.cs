@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Restaurants.Application.Restaurants;
-using AutoMapper;
-using Restaurants.Domain.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Restaurants.Application.Users;
 
 namespace Restaurants.Application.Extensions
 {
@@ -19,6 +17,9 @@ namespace Restaurants.Application.Extensions
                 .AddFluentValidationAutoValidation();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
+
+            services.AddScoped<IUserContext, UserContext>();
+            services.AddHttpContextAccessor();
 
         }
 

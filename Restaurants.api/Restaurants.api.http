@@ -1,16 +1,19 @@
 @host = https://localhost
 @port = 7157
 @Restaurants.api_HostAddress = {{host}}:{{port}}  
-
+@token = CfDJ8EKpNWjzxx5NkmgcT6qQodS4TmSg9SFo07cTp8b85jkzmiMACXw8I9d1FAAwOviMFJjxnIt7Gr0J_mpSYOC7BUKkXcg-q90j7DQ4rcm-mdkN8qCP_btwzrCG2u5QvTuIJn6d6Pd-SvgbL09XcAXEFvl2mmtjLELgcCdVK-pdRMHVQoSqnlazUPfSaqyNCNq1t-6npWDfePfrC5gTE5V_qkihxKkeS-g5gBrglklwda55-Z2LssL08NRoSEzWN_0U6VaatkHNT5CH728D7PEGBHFfHnUjFh-L9Hu6fKKUEIaTnnvcDEhFmgRF8k7qd0S0n0RxsxejTjDp7LhjeKqW8oJfBIulkwkYErlc3k3LGVr9pBEP6uihUJqyQ5xvJBMZF7pjMMG4cvQHifimsdT30lghq3bKubuNKfJEDCZmY1iig6sbZ2dv-tnG82Ae9Vj139MRLfNMNsvauIDWPoZ7vvxRVO4S8CaLtsiofgFUmebNWk8m24yoOyMdMpwt3lpkKkqfxDucVyqU56vlRFU_A_zMdGmy7y8c2cZr8v9lq3J6x74JRshgOPlefv6Ly2oWHGO14br0KfHJC2Wf1vSPDt-h51zeAGNbZVxiH0gbTYBjKjvStlAGGaboKdb4_lPZbSG7MWyLzzyMoW1a1g7raz5h8xmu2M_mWX4I7Wa7S2i1b-mEDFI3SfYXAD_NagZDcLySStlnT-eWSpo4bAyBApM
 ###
 //Get all restaurants
 GET {{Restaurants.api_HostAddress}}/api/restaurants
-Accept: application/json
+#Authorization: Bearer {{token}}
+
 
 ###
 //Get single restaurant
 GET {{Restaurants.api_HostAddress}}/api/restaurants/16
 Accept: application/json
+#Authorization: Bearer {{token}}
+
 
 ###
 //Add restaurant
@@ -34,7 +37,7 @@ GET https://localhost:7157/api/restaurants/35
 
 ###
 //delete restaurant
-DELETE {{Restaurants.api_HostAddress}}/api/restaurants/100
+DELETE {{Restaurants.api_HostAddress}}/api/restaurants/35
 
 ###
 //update restaurant
@@ -73,3 +76,31 @@ GET {{Restaurants.api_HostAddress}}/api/restaurants/1/dishes/2
 ###
 //delete dishes of a restaurant
 DELETE {{Restaurants.api_HostAddress}}/api/restaurants/100/dishes
+
+###
+//register new user
+POST {{Restaurants.api_HostAddress}}/api/identity/register
+Content-Type : application/json
+{
+  "email" : "user2@gmail.com",
+  "password" : "Password1!"
+}
+
+###
+//login existing user
+POST {{Restaurants.api_HostAddress}}/api/identity/login
+Content-Type : application/json
+{
+  "email" : "mayayounes02@gmail.com",
+  "password" : "Password1!"
+}
+
+###
+//edit user info
+PATCH {{Restaurants.api_HostAddress}}/api/identity/user
+Content-Type : application/json
+Authorization : Bearer {{token}}
+{
+  "dateOfBirth" : "2002-08-24",
+  "Nationality" : "Egyptian"
+}

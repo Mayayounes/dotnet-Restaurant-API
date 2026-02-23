@@ -5,7 +5,6 @@ using Restaurants.Application.Dishes.Commands.DeleteDishes;
 using Restaurants.Application.Dishes.Dto;
 using Restaurants.Application.Dishes.Queries.GetByIdForRestaurant;
 using Restaurants.Application.Dishes.Queries.GetDishesForRestaurant;
-using Restaurants.Domain.Entities;
 
 namespace Restaurants.API.Controllers;
 
