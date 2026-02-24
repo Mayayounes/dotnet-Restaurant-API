@@ -7,6 +7,7 @@ using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Seeders;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Restaurants.Infrastructure.Extensions;
 public static class ServiceCollectionExtensions
@@ -17,6 +18,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
         services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<RestaurantsDbContext>();
 
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();

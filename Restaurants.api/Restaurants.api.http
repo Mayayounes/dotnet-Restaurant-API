@@ -1,7 +1,7 @@
 @host = https://localhost
 @port = 7157
 @Restaurants.api_HostAddress = {{host}}:{{port}}  
-@token = CfDJ8EKpNWjzxx5NkmgcT6qQodS4TmSg9SFo07cTp8b85jkzmiMACXw8I9d1FAAwOviMFJjxnIt7Gr0J_mpSYOC7BUKkXcg-q90j7DQ4rcm-mdkN8qCP_btwzrCG2u5QvTuIJn6d6Pd-SvgbL09XcAXEFvl2mmtjLELgcCdVK-pdRMHVQoSqnlazUPfSaqyNCNq1t-6npWDfePfrC5gTE5V_qkihxKkeS-g5gBrglklwda55-Z2LssL08NRoSEzWN_0U6VaatkHNT5CH728D7PEGBHFfHnUjFh-L9Hu6fKKUEIaTnnvcDEhFmgRF8k7qd0S0n0RxsxejTjDp7LhjeKqW8oJfBIulkwkYErlc3k3LGVr9pBEP6uihUJqyQ5xvJBMZF7pjMMG4cvQHifimsdT30lghq3bKubuNKfJEDCZmY1iig6sbZ2dv-tnG82Ae9Vj139MRLfNMNsvauIDWPoZ7vvxRVO4S8CaLtsiofgFUmebNWk8m24yoOyMdMpwt3lpkKkqfxDucVyqU56vlRFU_A_zMdGmy7y8c2cZr8v9lq3J6x74JRshgOPlefv6Ly2oWHGO14br0KfHJC2Wf1vSPDt-h51zeAGNbZVxiH0gbTYBjKjvStlAGGaboKdb4_lPZbSG7MWyLzzyMoW1a1g7raz5h8xmu2M_mWX4I7Wa7S2i1b-mEDFI3SfYXAD_NagZDcLySStlnT-eWSpo4bAyBApM
+@token =CfDJ8EKpNWjzxx5NkmgcT6qQodRX8GyJpmxL4VIXFkOYHjySHNMotDmfMrGmLnYCmeVyDQHOlA_lxLVeBVpKj77676oksJJJr2Xe1brRXCKnPh5dNPSuW3rIa3zezw1rG-2-vIwUbd6iXG3SH7BPXi3ceOdaxNcLfal0qUM6aqPD7MkVOz6cmJBV2cb-sdtMhS7l1Roq3dkmh2jrwc5fAJ4nMw5cs-Illh1F-9yygEhFjkWh-lheUxrJkT0PE8s_4l1ZfYfE-0ePBdOaJusVK5dees9YJYEkoyX2tjna0xOoBFaTh771aXH6elbnSEOXC4EH0sMbGZy9V8-hENLT1z74X349nLfj9Y8u-fjrioczp4pyROJVNmNp3p-eSH4tMoudagqvjNxYdZejApYsTZYrZPwVN6UCgJR8TG1j3X7E9T198r2hEPZb1WuvbGS-56RB0xiBxQf3c19uzHslL1hfS3-E7X2Yp5iISAepTHJPi0S6HYddbk3IBfTXsS2SCrmX_Xb3z4gB35MzeAnlHWGZ3e9XHXn5_8sVYYmNkydI2LDKZxJ9IPLElEATUNzw9fjsQ8XQcy8yH__aEXpTeQRXnDyzUf6rVle-1yG86pXJDHTz1-CCVvjFWtfC3ccKYtQTxviOVzuvasRyVlHhf0PDqjIAbjc7Wu8uLer55BNrhELH0TMXA1oMz7tD3zYBAIKn5ELyt12HshGYr6QZjhCu4Mxhpe3ysstls4D7OEXxhyXLgWrASuhLE58EWYMGv6t-MGTq4Q7JJCuNRtTxl1bTYXQlRmz36t83MlS_w_wWA-gy
 ###
 //Get all restaurants
 GET {{Restaurants.api_HostAddress}}/api/restaurants
@@ -19,16 +19,17 @@ Accept: application/json
 //Add restaurant
 POST {{Restaurants.api_HostAddress}}/api/restaurants
 Content-type: application/json
+Authorization: Bearer {{token}}
 
 {
-  "Name": "Coff",
-  "Description": "Coffee shop",
+  "Name": "SuSS",
+  "Description": "Expensiev Coffee shop",
   "Category": "Italian",
-  "ContactEmail":"coff@gmail.com",
-  "ContactNumber":"010022267999",
+  "ContactEmail":"suzz@gmail.com",
+  "ContactNumber":"090909090",
   "City": "Alexandria",
   "Street": "kafr abdo",
-  "PostalCode": 333
+  "PostalCode": 3123
 }
 
 ###
@@ -82,7 +83,7 @@ DELETE {{Restaurants.api_HostAddress}}/api/restaurants/100/dishes
 POST {{Restaurants.api_HostAddress}}/api/identity/register
 Content-Type : application/json
 {
-  "email" : "user2@gmail.com",
+  "email" : "owner@gmail.com",
   "password" : "Password1!"
 }
 
@@ -91,7 +92,7 @@ Content-Type : application/json
 POST {{Restaurants.api_HostAddress}}/api/identity/login
 Content-Type : application/json
 {
-  "email" : "mayayounes02@gmail.com",
+  "email" : "admin@gmail.com",
   "password" : "Password1!"
 }
 
@@ -103,4 +104,22 @@ Authorization : Bearer {{token}}
 {
   "dateOfBirth" : "2002-08-24",
   "Nationality" : "Egyptian"
+}
+###
+//assign user to role
+POST {{Restaurants.api_HostAddress}}/api/identity/userRole
+Content-Type : application/json
+Authorization : Bearer {{token}}
+{
+  "userEmail" : "mayayounes02@gmail.com",
+  "roleName" : "user"
+}
+###
+//unassign user to role
+DELETE {{Restaurants.api_HostAddress}}/api/identity/userRole
+Content-Type : application/json
+Authorization : Bearer {{token}}
+{
+  "userEmail" : "mayayounes02@gmail.com",
+  "roleName" : "user"
 }
