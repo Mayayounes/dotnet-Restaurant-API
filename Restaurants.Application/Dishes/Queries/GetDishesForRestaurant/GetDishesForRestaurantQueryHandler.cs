@@ -8,7 +8,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Dishes.Queries.GetDishesForRestaurant;
 
-public class GetDishesForRestaurantQueryHandler(ILogger<GetDishesForRestaurantQueryHandler> logger , IMapper mapper , IRestaurantsRepository restaurantsRepository , IDishesRepository dishesRepository) : IRequestHandler<GetDishesForRestaurantQuery, IEnumerable<DishDto>>
+public class GetDishesForRestaurantQueryHandler(ILogger<GetDishesForRestaurantQueryHandler> logger , IMapper mapper , IRestaurantsRepository restaurantsRepository) : IRequestHandler<GetDishesForRestaurantQuery, IEnumerable<DishDto>>
 {
     public async Task<IEnumerable<DishDto>> Handle(GetDishesForRestaurantQuery request, CancellationToken cancellationToken)
     {
