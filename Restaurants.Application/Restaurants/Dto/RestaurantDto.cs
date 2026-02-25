@@ -12,8 +12,7 @@ public class RestaurantDto
     public string? City { get; set; }
     public string? Street { get; set; }
 
-    public int? PostalCode { get; set; }
-
+    public string PostalCode { get; set; } = default!;
     public List<DishDto> Dishes { get; set; } = [];
 
 }

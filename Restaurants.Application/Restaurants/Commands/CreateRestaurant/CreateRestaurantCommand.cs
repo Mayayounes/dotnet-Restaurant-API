@@ -12,5 +12,5 @@ public class CreateRestaurantCommand : IRequest<int>
     public string? ContactNumber { get; set; }
     public string? City { get; set; }
     public string? Street { get; set; }
-    public int? PostalCode { get; set; }
+    public string PostalCode { get; set; } = default!;
 }

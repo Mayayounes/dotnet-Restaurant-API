@@ -1,10 +1,16 @@
 @host = https://localhost
 @port = 7157
 @Restaurants.api_HostAddress = {{host}}:{{port}}  
-@token =CfDJ8EKpNWjzxx5NkmgcT6qQodQ2aer-biisy5FP1gmf-pA1uIY5KsFWAJw530GoQnUAVk2ih29hnvg0-QgUqejbMnDTpJF3YkSh_WZn5kPig78EIEmLLkBkJ7qLZc5BZoJsuCN0wqZfE0a5l5MmDzptKb6Aym39-SJaHU7ni28gBb0_18x006qyNghfnY9aA8zL9QGAEer-nd63uzHR3-YYjB0rLDkX8qJSx7abgeAnXaYDHeJIxXw_35Kf_uedkJDMKnkyzqbVIjvlnx0Ryz4kd8QzHpmICjfkRIrvx3N-UvrpajuiN4dg6RklG2N2wW_o8t0FdhndaLnRs-FMjSPBTvTQgQMsRG2fiHyFcMovplZjifMpz6lnrzCCfo1Abvu8aA-tHdi4HrxsXLdsfrMMTEpbG6UvTv0NaQH6FTVinB4lKTp4SNAstmOHrZPsdq6czetytT_hVwgHAWhoXvkxYfhq7pUwyzLYhlGmXJIGEfpQkDCHto8EbZDGvAYHvqH8wjiVC0rzlvf05GyOQxQyXaIa3mHZjv3botDFNouk5g5-_OV4QUVymTI85iiWW5WUvEqkJp8IwfTg_mUJo5fAnryYWM0iucBdKrqmxWpcx6aS70X-oKdU3Fhy_TJ7jjIlP6rzgDhch8zVX6tDNML1utZ03aIdWfPitntxHOMF0FYDdxKbmqm9y9StHhuEJSXUHWMQWgSKUlKFx4eUS3DiVTNPkPJTqoIbftZqJf2MaFbhHTl2MlbHQmbfjnJ4MslN3yTAyFbnsY3MTpbdI-9A85V54YPu20WFTXqkobwukyL0
+@token =CfDJ8EKpNWjzxx5NkmgcT6qQodR9qIY5JOxu7AFAaXs3VUsLUpyVtznA9YnkeexfPBPRlm4-SoIwA9u_QyL5kwn19XF0VCY4bxkua7nkPcRtWTqYE5yWFjypNIE67T1NguWF_Km6fCruD097s-fnvMT4pfv0AQw93r6LrGJs6rAZlOfC7x6qbFn4jEvB6m4vOMxCa-9K0rJydrMkDt9yu21dITF5RvQm3esUqugy9Wnmrv_0o11bpaf8PGYVuxvAbj4NrcusDOyXKDW66eEqVoGxwDYUxsIce-cg7soKEDBLxSmkvOGDI_6_2f9G2m07N1uCihvM2LHUVwjw6LuAuSLPh8CyPzxWDGGXNsVBJiS8J1J0ri4X_Hp3weooU_F906DWwYgaT8552GkLvlD9oG4x6eLknE0ohlO_FBurOlpFrk6H-aRDoxur1r4ct60OIxp51bS6XhUPYwlsz7TIKFt-K62ubccKF-RmiXAiF1XfJHfeLAzmf1ya8Hsml5GTmOcLtR216Zbr9NzIziptQsI27rPbTVaPKVop0ZF6oWMWLK_R_0zrGdCIKXPdLWOzxT-6w5pb0Ro9m1SG5WAfCTAzk2xqteN7MPcp-O0A7dYLRxVyRJnmkrWYLe6H05oCeoaZWvwbQwm6fzYos4nPPejjHRPa8neZIe8UYA1M1GUWmVnFt9VrsN6OpilCo2BWkbxbReMJllxXfMjidtzOK0P0WhIx8Bh0lzJs1NicjjiIL_mRmfIcWiIby2fwRy33dyTah7zrQfOCJKdH-xuMLt0T7Htg1PWLQ3QKAjqx-5SwaWly
 ###
 //Get all restaurants
 GET {{Restaurants.api_HostAddress}}/api/restaurants
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+//Get all restaurants by searchPhrase (Pagination)
+GET {{Restaurants.api_HostAddress}}/api/restaurants?searchPhrase=&pageSize=30&pageNumber=2&sortBy=city
 Accept: application/json
 Authorization: Bearer {{token}}
 
@@ -23,13 +29,13 @@ Content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "Name": "Amirat",
-  "Description": "Hypermarket",
+  "Name": "The Walk",
+  "Description": "byBeach",
   "Category": "Italian",
-  "ContactEmail":"sarai@gmail.com",
+  "ContactEmail":"point6@gmail.com",
   "ContactNumber":"33",
   "City": "Alexandria",
-  "Street": "Moaaskar romany",
+  "Street": "Sedy gaber",
   "PostalCode": 889
 }
 
@@ -98,7 +104,7 @@ Content-Type : application/json
 POST {{Restaurants.api_HostAddress}}/api/identity/login
 Content-Type : application/json
 {
-  "email" : "Owner2@gmail.com",
+  "email" : "mayayounes02@gmail.com",
   "password" : "Password1!"
 }
 
